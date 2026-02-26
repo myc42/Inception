@@ -1,0 +1,21 @@
+services:
+  mariadb:
+    build: ./requirements/mariadb # Chemin vers le Dockerfile de MariaDB
+    container_name: mariadb
+    image: mariadb # Image que tu veux utiliser (cela peut être l'image construite à partir du Dockerfile)
+    env_file: .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadbvolume:/var/lib/mysql
+    networks:
+      - inception
+
+volumes:
+  mariadbvolume:
+    # local signifie il sera stocké sur le disque de ta machine hôte.
+    driver: local
+
+networks:
+  inception:
+    driver: bridge
