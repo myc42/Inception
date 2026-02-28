@@ -35,4 +35,4 @@ EOF
     mysqladmin --socket=$MYSQL_SOCKET -u root -p${MYSQL_ROOT_PASSWORD} shutdown
 fi
 
-exec mysqld --user=mysql --bind-address=127.0.0.1
+exec mysqld --user=mysql --bind-address=0.0.0.0
