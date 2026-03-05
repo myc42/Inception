@@ -12,10 +12,11 @@ RUN apt-get update && \
 
 RUN mkdir -p /var/www/html
 COPY ./tools/wp_script.sh /wp_script.sh
-COPY ./conf/wp-config.php /var/www/html/wp-config.php
 RUN chmod +x /wp_script.sh
 
 
 EXPOSE 9000
 
 ENTRYPOINT ["/wp_script.sh"]
+
+#docker compose down --rmi all -v --remove-orphans

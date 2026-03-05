@@ -10,7 +10,7 @@ RUN apt-get update && \
 RUN mkdir -p /var/lib/mysql
 COPY /conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-COPY tools/mariadb_script.sh /mariadb_script.sh
+COPY ./tools/mariadb_script.sh /mariadb_script.sh
 RUN chmod +x /mariadb_script.sh
 
 EXPOSE 3306
