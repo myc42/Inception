@@ -11,10 +11,11 @@ RUN apt-get update && \
     && apt-get clean
 
 RUN mkdir -p /var/www/html
-COPY ./tools/init.sh /init.sh
+COPY ./tools/wp_script.sh /wp_script.sh
+COPY ./conf/wp-config.php /var/www/html/wp-config.php
+RUN chmod +x /wp_script.sh
 
-RUN chmod +x /init.sh
 
 EXPOSE 9000
 
-ENTRYPOINT ["/init.sh"]
+ENTRYPOINT ["/wp_script.sh"]
