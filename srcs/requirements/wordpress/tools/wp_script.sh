@@ -34,4 +34,4 @@ wp core install \
 
 chown -R www-data:www-data /var/www/html
 
-exec php-fpm --nodaemonize --allow-to-run-as-root
+exec php-fpm8.2 -F
