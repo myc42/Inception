@@ -8,7 +8,7 @@ done
 echo "✅ MariaDB est prêt"
 
 # Ensuite ton WP-CLI
-cd /var/www/html
+cd /var/www/wordpress
 #cp wp-config-sample.php wp-config.php
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
@@ -32,6 +32,6 @@ wp core install \
   --admin_email="$WP_ADMIN_EMAIL" \
   --allow-root
 
-chown -R www-data:www-data /var/www/html
+chown -R www-data:www-data /var/www/wordpress
 
 exec php-fpm8.2 -F

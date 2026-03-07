@@ -19,7 +19,7 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - wpfiles:/var/www/html
+      - wpfiles:/var/www/wordpress
     networks:
       - inception
 
@@ -31,7 +31,9 @@ services:
     ports:
       - "443:443"
     volumes:
-      - wpfiles:/var/www/html
+      - wpfiles:/var/www/wordpress
+    depends_on:
+      - wordpress
     networks:
       - inception
 
@@ -39,6 +41,8 @@ volumes:
   mariadbvolume:
     driver: local
   wpfiles:
+    driver: local
+  wpfiless:
     driver: local
 
 networks:
