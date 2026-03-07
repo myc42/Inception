@@ -17,12 +17,28 @@ services:
     image: wordpress
     env_file: .env
     ports:
-      - "9000:80"
+      - "9000:9000"
+    volumes:
+      - wpfiles:/var/www/html
+    networks:
+      - inception
+
+  nginx:
+    build: ./requirements/nginx
+    container_name: nginx
+    image: nginx
+    env_file: .env
+    ports:
+      - "443:443"
+    volumes:
+      - wpfiles:/var/www/html
     networks:
       - inception
 
 volumes:
   mariadbvolume:
+    driver: local
+  wpfiles:
     driver: local
 
 networks:
