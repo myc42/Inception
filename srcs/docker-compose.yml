@@ -10,6 +10,7 @@ services:
       - mariadbvolume:/var/lib/mysql
     networks:
       - inception
+    restart: always
 
   wordpress:
     build: ./requirements/wordpress
@@ -22,6 +23,9 @@ services:
       - wpfiles:/var/www/wordpress
     networks:
       - inception
+    restart: always
+    depends_on:
+      - mariadb
 
   nginx:
     build: ./requirements/nginx
@@ -36,13 +40,12 @@ services:
       - wordpress
     networks:
       - inception
+    restart: always
 
 volumes:
   mariadbvolume:
     driver: local
   wpfiles:
-    driver: local
-  wpfiless:
     driver: local
 
 networks:
