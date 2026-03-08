@@ -18,7 +18,7 @@ services:
     image: wordpress
     env_file: .env
     ports:
-      - "9000:9000"
+      - "8000:8000"
     volumes:
       - wpfiles:/var/www/wordpress
     networks:

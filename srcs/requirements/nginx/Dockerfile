@@ -17,5 +17,6 @@ RUN openssl req -x509 -nodes \
 
 
 EXPOSE 443
+#EXPOSE 255
 
 CMD ["nginx", "-g", "daemon off;"]

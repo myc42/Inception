@@ -14,5 +14,6 @@ COPY ./tools/mariadb_script.sh /mariadb_script.sh
 RUN chmod +x /mariadb_script.sh
 
 EXPOSE 3306
+#EXPOSE 5688
 
 ENTRYPOINT ["/mariadb_script.sh"]
