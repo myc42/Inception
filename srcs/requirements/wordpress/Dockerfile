@@ -23,6 +23,8 @@ RUN mkdir -p /var/www/wordpress
 COPY ./tools/wp_script.sh /wp_script.sh
 RUN chmod +x /wp_script.sh
 
+#EXPOSE 9000
 EXPOSE 8000
+
 
 ENTRYPOINT ["/wp_script.sh"]

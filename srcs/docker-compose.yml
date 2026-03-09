@@ -5,7 +5,7 @@ services:
     image: mariadb
     env_file: .env
     ports:
-      - "3306:3306"
+      - "5688:5688"
     volumes:
       - mariadbvolume:/var/lib/mysql
     networks:
@@ -18,7 +18,7 @@ services:
     image: wordpress
     env_file: .env
     ports:
-      - "8000:8000"
+      - "9000:8000"
     volumes:
       - wpfiles:/var/www/wordpress
     networks:

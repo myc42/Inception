@@ -1,7 +1,7 @@
 SRC_DIR := ./srcs
 COMPOSE := docker compose -f $(SRC_DIR)/docker-compose.yml
 
-all: help
+all: build
 
 build:
 	$(COMPOSE) up -d --build

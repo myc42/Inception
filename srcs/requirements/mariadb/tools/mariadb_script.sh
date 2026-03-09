@@ -31,4 +31,5 @@ echo "Base ${MYSQL_DATABASE} prête"
 
 # Remplacer le script par MariaDB en PID 1 pour Docker
 #exec mysqld_safe --datadir=/var/lib/mysql
-wait
+#wait
+exec mysqld --datadir=/var/lib/mysql

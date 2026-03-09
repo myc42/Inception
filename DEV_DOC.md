@@ -1,0 +1,13 @@
+# 🛠 DEV_DOC.md — Guide développeur pour Inception
+
+Pour commencer le développement sur le projet Inception, il est essentiel d’installer Docker sur votre machine afin de pouvoir créer et gérer des conteneurs. Tous les services sont définis dans `srcs/docker-compose.yml` et chaque service possède son propre Dockerfile situé dans `srcs/requirements/<service>/Dockerfile`. Un bon point de départ pour comprendre comment écrire un Dockerfile et exposer des ports . ce lien utile : https://blog.stephane-robert.info/docs/conteneurs/images-conteneurs/ecrire-dockerfile/#linstruction-expose. 
+
+Ensuite, il est important de comprendre le fonctionnement de MariaDB : commencez par l’installer manuellement pour voir comment il fonctionne, tester vos bases, puis automatisez l’installation via un script dans le conteneur.
+
+Lors de l’installation de MariaDB, vous devrez configurer la communication avec WordPress. MariaDB stocke toutes ses données dans `/var/lib/mysql`. Si vous ne montez pas de volume Docker pour ce dossier, vous perdrez toutes les données si le conteneur est supprimé, car Docker efface le système de fichiers interne du conteneur. L’utilisation d’un volume permet de rendre les données persistantes, garantissant que MariaDB pourra écrire ses bases, tables, journaux et fichiers système. Une fois MariaDB configuré, passez à WordPress.
+
+Il existe de nombreuses vidéos et tutoriels en ligne pour installer WordPress, mais dans ce projet, il est important de comprendre comment modifier les fichiers internes du conteneur, comme le fichier `fpm.sock` pour PHP-FPM, afin de permettre au serveur d’écouter sur toutes les interfaces. 
+
+Ensuite, installez et configurez NGINX. Il est crucial de comprendre comment fonctionne un serveur web : comment il traite une demande, prépare une réponse et l’envoie, que ce soit pour des contenus statiques ou dynamiques. Enfin, comprenez la communication entre NGINX et PHP-FPM : NGINX sert de serveur web frontal, reçoit les requêtes et les transmet à PHP-FPM pour le traitement des scripts PHP, puis renvoie la réponse au client.
+
+En suivant cette approche progressive — comprendre et installer MariaDB, configurer WordPress et PHP-FPM, puis installer et configurer NGINX pour servir les contenus et communiquer avec PHP-FPM — vous pourrez développer et modifier le projet Inception tout en conservant une infrastructure stable et reproductible grâce à Docker.
