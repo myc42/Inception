@@ -48,26 +48,6 @@ Le projet repose sur plusieurs technologies importantes :
 • MariaDB → base de données  
 • Debian → image Linux utilisée comme base pour les conteneurs
 
-────────────────────────
-
-📁 Structure du projet
-
-.
-├── Makefile
-├── secrets
-├── srcs
-│   ├── docker-compose.yml
-│   ├── requirements
-│   │   ├── mariadb
-│   │   │   ├── Dockerfile
-│   │   │   └── tools
-│   │   ├── nginx
-│   │   │   ├── Dockerfile
-│   │   │   └── conf
-│   │   └── wordpress
-│   │       ├── Dockerfile
-│   │       └── tools
-│   └── .env
 
 Explication :
 
@@ -90,49 +70,32 @@ Stocke les informations sensibles (mots de passe, clés, etc.).
 
 ⚙️ Installation et utilisation
 
-1️⃣ Cloner le repository
+1️ Cloner le repository
 
 git clone https://github.com/macoulib/inception.git  
 cd inception
 
-2️⃣ Configurer les variables d'environnement
+2️Configurer les variables d'environnement
 
-Modifier le fichier .env :
 
-DOMAIN_NAME=login.42.fr  
-MYSQL_DATABASE=wordpress  
-MYSQL_USER=user  
-MYSQL_PASSWORD=password  
-MYSQL_ROOT_PASSWORD=rootpassword
 
-3️⃣ Lancer les services
+3️ Lancer les services
 
 Avec le Makefile :
 
 make
 
-Ou directement avec Docker Compose :
-
-docker compose -f srcs/docker-compose.yml up --build
-
-4️⃣ Accéder au site
+4️ Accéder au site
 
 Ouvrir un navigateur et aller à l'adresse :
 
-https://macoulib.42.fr
+https://localhost
 
-────────────────────────
-
-🔐 Sécurité
-
-Le projet inclut plusieurs mesures de sécurité importantes :
 
 • Utilisation du protocole HTTPS avec TLS  
 • Isolation de chaque service dans un conteneur Docker  
 • Utilisation de variables d’environnement pour les configurations sensibles  
 • Utilisation de volumes pour protéger les données importantes
-
-────────────────────────
 
 💾 Volumes
 
@@ -144,8 +107,6 @@ Dans ce projet, ils sont utilisés pour :
 • conserver les fichiers WordPress
 
 Cela garantit que les données ne sont pas perdues lors d'un redémarrage ou d'une reconstruction des conteneurs.
-
-────────────────────────
 
 🎯 Objectifs pédagogiques du projet
 
